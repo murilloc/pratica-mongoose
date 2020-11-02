@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // using IIFE
 (async () => {
     try {
-        mongoose.connect('mongodb://mongoserver/igti', {
+        await mongoose.connect('mongodb://mongoserver/igti', {
             auth: {
                 authSource: "admin"
             },
