@@ -1,21 +1,21 @@
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://mongoserver/igti', {
-    auth: {
-        authSource: "admin"
-    },
-    user: "root",
-    pass: "changeme!",
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then((result) => {
-        console.log('Database Connected');
-        runActions();
-    }).catch((error) => {
-    console.log(error);
-});
-
+// using IIFE
+(async () => {
+    try {
+        mongoose.connect('mongodb://mongoserver/igti', {
+            auth: {
+                authSource: "admin"
+            },
+            user: "root",
+            pass: "changeme!",
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+    } catch (error) {
+        console.log('MongoDb Connection failure:' + error);
+    }
+})();
 
 const runActions = () => {
 
@@ -48,4 +48,7 @@ const runActions = () => {
     });
 
 }
+
+
+runActions();
 
